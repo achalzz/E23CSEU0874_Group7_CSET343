@@ -174,21 +174,44 @@
 
 ---
 
+## Lab Assignment 8: NLP Topic Modeling on Health-Related Headlines
+
+**Notebook:** [`Lab_Assignment_8_AI_in_Healthcare.ipynb`](Lab_Assignment_8_AI_in_Healthcare.ipynb)  
+**Dataset:** Health-Related Headlines Dataset (WuraolaOyewusi/Health-Related-Headlines-Datasets-for-Natural-Language-Processing)
+
+### What Was Asked
+
+> Analyze and process real-world healthcare-related text data using NLP techniques such as topic modeling:
+> - **Task 1: Data Preprocessing and Cleaning** — Load dataset, perform tokenization, stop-word removal, lemmatization, lowercasing, and punctuation removal. Display cleaned text samples.
+> - **Task 2: Exploratory Text Analysis & Word Visualization** — Word frequency distribution, Word Cloud showing common health-related terms, plot top 20 frequent words using matplotlib/seaborn.
+> - **Task 3: Topic Modelling using LDA** — Cleaned text corpus for LDA topic modeling, display top 5 words per topic, and visualize results using pyLDAvis.
+
+### What We Did
+
+| Task | Requirement | Implementation |
+|------|-------------|----------------|
+| **Task 1: Preprocessing & Cleaning** | Load dataset, clean text (tokenize, stopwords, lemmatize, lowercase, punctuation) | Loaded 39,405 health news headlines directly from GitHub repository, built concise NLP cleaning pipeline with NLTK `word_tokenize`, `stopwords`, and `WordNetLemmatizer`, and displayed before/after text comparisons |
+| **Task 2: Text Analysis & Visualization** | Word frequency distribution, Top 20 barplot, Word Cloud | Calculated token frequencies with `Counter`, displayed Top 10 terms, plotted Seaborn horizontal barplot of top 20 terms, and generated an ocean-themed Word Cloud of the healthcare corpus |
+| **Task 3: Topic Modelling with LDA** | LDA model, top 5 words per topic, pyLDAvis visualization | Fitted `CountVectorizer` (Document-Term Matrix) and `LatentDirichletAllocation` (5 dominant topics), extracted and tabulated the top 5 representative keywords per topic, and visualized topic separation interactively using `pyLDAvis` |
+
+---
+
 ## Tech Stack
 
 | Component | Technology |
 |-----------|-----------|
 | Language | Python 3.11 |
 | Data Processing | NumPy, Pandas, SciPy |
-| Visualization | Matplotlib, Seaborn |
-| Machine Learning | Scikit-Learn (Logistic Regression, SVM, KNN, Random Forest, Gradient Boosting, MLP) |
+| Visualization | Matplotlib, Seaborn, WordCloud, pyLDAvis |
+| Machine Learning | Scikit-Learn (Logistic Regression, SVM, KNN, Random Forest, Gradient Boosting, MLP, LDA) |
 | Deep Learning | TensorFlow/Keras (Lab 7), PyTorch (Lab 6) |
 | Hyperparameter Tuning | Scikit-Learn GridSearchCV + SciKeras KerasClassifier |
 | Image Processing | Pillow, Scikit-Image (HOG, LBP, GLCM) |
 | Signal Processing | WFDB (ECG), SciPy Signal |
-| NLP | NLTK, Scikit-Learn TF-IDF |
+| NLP & Topic Modeling | NLTK (WordNet, Stopwords, Tokenizer), Scikit-Learn (CountVectorizer, LatentDirichletAllocation), pyLDAvis |
 | Imputation | Scikit-Learn KNNImputer |
 
 ---
 
 *All notebooks include Hinglish code explanations for each cell.*
+
