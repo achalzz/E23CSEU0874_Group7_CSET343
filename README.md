@@ -196,6 +196,28 @@
 
 ---
 
+## Lab Assignment 9: 3D CNN for Automated Fall Detection in Healthcare Video Data
+
+**Notebook:** [`Lab_Assignment_9_AI_in_Healthcare.ipynb`](Lab_Assignment_9_AI_in_Healthcare.ipynb)  
+**Dataset:** UR Fall Detection Dataset (URFD) — 70 Video Sequences (30 Falls, 40 ADL)
+
+### What Was Asked
+
+> Design and evaluate a 3D Convolutional Neural Network (3D CNN) for automated fall detection using video data. The experiment focuses on identifying falls in controlled environments to support elderly care and hospital monitoring systems:
+> - **Task 1: Data Acquisition and Exploration** — Download/catalog URFD dataset, visually differentiate normal activity (ADL) vs fall sequences.
+> - **Task 2: Data Preprocessing** — Extract 16 frames per video, resize to 112×112, normalize [0, 1], RGB channels, stack to 3D video tensors $(B, C, T, H, W)$, apply 3D video augmentations (horizontal flip, temporal jittering, rotation), handle class imbalance, verify corrupted files, 70/15/15 stratified split.
+> - **Task 3: Model Training and Basic Evaluation** — Implement baseline 3D CNN (FallNet3D), evaluate with Accuracy, Precision, Recall, F1-score, AUROC, Confusion Matrix, ROC Curve, and relate errors to camera view, occlusion, and motion blur.
+
+### What We Did
+
+| Task | Requirement | Implementation |
+|------|-------------|----------------|
+| **Task 1: Acquisition & Visual Exploration** | Catalog URFD cohort, multi-frame visual comparison | Cataloged 70 sequences (30 Falls / 40 ADL), plotted class distribution (42.9% Fall vs 57.1% ADL), and visualized sequential keyframes $(t=0, 4, 8, 12, 15)$ comparing sudden vertical collapse in falls vs stable posture in ADLs |
+| **Task 2: Preprocessing & 3D Video Tensors** | 16 frames, 112×112, [0, 1] normalization, 3D tensor stacking, augmentations, weighted loss | Standardized frames to $(3, 16, 112, 112)$, verified 0 corrupted files, implemented spatial flip and temporal frame jittering, computed minority class weight ($w=1.33$), and partitioned into Stratified 70% Train / 15% Val / 15% Test |
+| **Task 3: 3D CNN Training & Clinical Evaluation** | 3D CNN architecture, training curves, test metrics, confusion matrix, ROC curve, failure modes | Built PyTorch `FallNet3D` with 3-stage `Conv3d` + `BatchNorm3d` + `MaxPool3d` + `AdaptiveAvgPool3d`, trained over 12 epochs, achieved high test accuracy and sensitivity, generated annotated Confusion Matrix and ROC-AUC curve, and systematically analyzed clinical failure modes (Camera view angle, Occlusion, Motion blur) |
+
+---
+
 ## Tech Stack
 
 | Component | Technology |
@@ -204,7 +226,7 @@
 | Data Processing | NumPy, Pandas, SciPy |
 | Visualization | Matplotlib, Seaborn, WordCloud, pyLDAvis |
 | Machine Learning | Scikit-Learn (Logistic Regression, SVM, KNN, Random Forest, Gradient Boosting, MLP, LDA) |
-| Deep Learning | TensorFlow/Keras (Lab 7), PyTorch (Lab 6) |
+| Deep Learning | PyTorch 3D CNN (Lab 9), PyTorch 2D CNN (Lab 6), TensorFlow/Keras (Lab 7) |
 | Hyperparameter Tuning | Scikit-Learn GridSearchCV + SciKeras KerasClassifier |
 | Image Processing | Pillow, Scikit-Image (HOG, LBP, GLCM) |
 | Signal Processing | WFDB (ECG), SciPy Signal |
@@ -213,5 +235,6 @@
 
 ---
 
-*All notebooks include Hinglish code explanations for each cell.*
+*All notebooks (Lab 1 through Lab 9) are fully executed with outputs and include Hinglish code explanations for each cell.*
+
 
